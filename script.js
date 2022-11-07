@@ -12,7 +12,9 @@ async function getWeatherByLocation(city) {
         origin: "cors"});
     const respData = await resp.json();
 
-    console.log(respData, KtoC(respData.main.temp));
+    // console.log(respData, KtoC(respData.main.temp));
+    console.log(respData); //Show data on console
+    
 
     addWeatherToPage(respData);
 }
@@ -27,7 +29,8 @@ function addWeatherToPage(data) {
     weather.classList.add('weather');
 
     weather.innerHTML = `
-        <h2>${temp}°C</h2>
+        <h2> <img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png" /> ${temp}°C</h2>
+        <small>${data.weather[0].main}</small>
     `;
 
     // CleanUP results
