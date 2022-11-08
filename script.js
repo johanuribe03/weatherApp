@@ -19,7 +19,7 @@ async function getWeatherByLocation(city) {
     addWeatherToPage(respData);
 }
 
-getWeatherByLocation('Bogota');
+getWeatherByLocation('Miami');
 
 
 function addWeatherToPage(data) {
@@ -29,7 +29,7 @@ function addWeatherToPage(data) {
     weather.classList.add('weather');
 
     weather.innerHTML = `
-        <h2> <img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png" /> ${temp}°C</h2>
+        <h2> <img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png" /> ${temp}°F</h2>
         <small>${data.weather[0].main}</small>
     `;
 
@@ -40,7 +40,9 @@ function addWeatherToPage(data) {
 }
 
 function KtoC(K) {
-    return (K - 273.15).toFixed(2); // 2 digits
+    // return (K - 273.15).toFixed(2); // Celsius 2 digits
+    return (1.8*(K - 273.15)+32).toFixed(2); // Farenheit 2 digits
+
 }
 
 
